@@ -11,3 +11,10 @@ after_success:
   - docker build -t spaci1010/multi-nginx ./nginx
   - docker build -t spaci1010/multi-server ./server
   - docker build -t spaci1010/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push spaci1010/multi-client
+  - docker push spaci1010/multi-nginx
+  - docker push spaci1010/multi-server
+  - docker push spaci1010/multi-worker
